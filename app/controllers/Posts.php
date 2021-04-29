@@ -1,11 +1,8 @@
 <?php
     class Posts extends Controller {
         public function __construct(){
-            // To make all the /posts/ restricted, check for loggedIn here in constructor
-            if(!isLoggedIn()){
-                redirect('users/login');
-            }
-            // These class member variables can be used everywhere if declared in the constructor
+
+            // These class methods can be used everywhere if declared in the constructor
             $this->postModel = $this->model('Post');
             $this->userModel = $this->model('User');
         }
@@ -17,12 +14,13 @@
             $data = [
                 'posts' => $posts
             ];
+            
             // Load a view and pass through data array
             $this->view('posts/index', $data);
         }
 
         
-/* ------------------------------  add() ------------------------------ */
+/* ------------------------------  /posts/add ------------------------------ */
         public function add(){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 // Sanitize POST array
@@ -70,7 +68,7 @@
         }
 
 
-/* ------------------------------  edit($id) ----------------------------- */
+/* ------------------------------  /posts/edit/$id ----------------------------- */
         public function edit($id){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 // Sanitize POST array
@@ -124,7 +122,7 @@
             }
         }
 
-/* ------------------------------  show($id) ----------------------------- */
+/* ------------------------------  /posts/show/$id ----------------------------- */
         public function show($id){
             $post = $this->postModel->getPostById($id);
             $user = $this->userModel->getUserById($post->user_id);
@@ -138,7 +136,7 @@
         }
 
 
-/* ------------------------------- delete($id) ------------------------------ */
+/* ------------------------------- /posts/delete/$id ------------------------------ */
         public function delete($id){
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 // Get existing post from model

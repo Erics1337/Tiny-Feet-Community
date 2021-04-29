@@ -9,8 +9,8 @@ class Pages extends Controller {
     }
 
     $data = [
-      'title' => 'SharePosts',
-      'description' => 'Simple social network built on the TraversyMVC PHP framework'
+      'title' => 'Tiny Feet Community',
+      'description' => 'Community Forums to share information about Climate Action Planning'
     ];
 
     // pass data into the view

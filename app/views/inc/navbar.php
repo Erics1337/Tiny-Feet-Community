@@ -11,7 +11,10 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/posts">Forum</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT; ?>/profiles">Profiles</a>
         </li>
       </ul>
 
@@ -21,7 +24,7 @@
         <?php if (isset($_SESSION['user_id'])) : ?>
           <!-- if user_id variable is set meaning user is logged in, show logout.  If not set, show register and login -->
           <li class="nav-item">
-            <a class="nav-link" href="#"> Logged in as <?php echo $_SESSION['user_name']; ?></a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/users/profiles/<?php echo $_SESSION['user_username'] ?>"> Logged in as <?php echo $_SESSION['user_username']; ?></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>

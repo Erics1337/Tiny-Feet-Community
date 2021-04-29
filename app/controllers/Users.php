@@ -5,7 +5,7 @@
             $this->userModel = $this->model('User');
         }
 
-        // Handles loading and submitting register form
+/* ----------------------------- /users/register ---------------------------- */
         public function register(){
             // Check for POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -16,11 +16,11 @@
 
                 // Init data
                 $data =[
-                    'name' => trim($_POST['name']),
+                    'username' => trim($_POST['username']),
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
                     'confirm_password' => trim($_POST['confirm_password']),
-                    'name_err' => '',
+                    'username_err' => '',
                     'email_err' => '',
                     'password_err' => '',
                     'confirm_password_err' => ''
@@ -31,13 +31,18 @@
                     $data['email_err'] = 'Please enter email';
                 } else {
                     // Check if email already exists with this model function
-                    if($this->userModel->findUserByEmail($data['email'])){
-                        $data['email_err'] = 'Email is already taken';
+                    if($this->userModel->emailExists($data['email'])){
+                        $data['email_err'] = 'An account with that username already exists';
                     }
                 }
-                // Validate name
-                if(empty($data['name'])){
-                    $data['name_err'] = 'Please enter name';
+                // Validate username
+                if(empty($data['username'])){
+                    $data['username_err'] = 'Please enter username';
+                } else {
+                    // Check if email already exists with this model function
+                    if($this->userModel->usernameExists($data['username'])){
+                        $data['username_err'] = 'That username is already taken';
+                    }
                 }
                 // Validate password
                 if(empty($data['password'])){
@@ -53,9 +58,8 @@
                         $data['confirm_password_err'] = 'Password do not match';
                     }
                 }
-
                 // Make sure errors are empty
-                if(empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) && 
+                if(empty($data['email_err']) && empty($data['username_err']) && empty($data['password_err']) && 
                 empty($data['confirm_password_err'])){
                     // Validated
                     // Hash password
@@ -73,16 +77,14 @@
                     // Load view with errors
                     $this->view('users/register', $data);
                 }
-
-
             } else {
                 // Init data
                 $data =[
-                    'name' => '',
+                    'username' => '',
                     'email' => '',
                     'password' => '',
                     'confirm_password' => '',
-                    'name_err' => '',
+                    'username_err' => '',
                     'email_err' => '',
                     'password_err' => '',
                     'confirm_password_err' => ''
@@ -93,6 +95,8 @@
             }
         }
 
+
+/* ------------------------------ /users/login ------------------------------ */
         // Handles loading and submitting register form
         public function login(){
             // Check for POST
@@ -131,7 +135,7 @@
                     // Validated
                     // Check and set logged in user
                     $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-
+                    // If successfully loged in user object then create session
                     if($loggedInUser){
                         // Create Session variables and add data that was pulled from the database to that Session, else load login view with error
                         $this->createUserSession($loggedInUser);
@@ -160,10 +164,12 @@
         }
 
 
+/* -------------------------------- functions ------------------------------- */
         public function createUserSession($user){
             $_SESSION['user_id'] = $user->id;
             $_SESSION['user_email'] = $user->email;
-            $_SESSION['user_name'] = $user->name;
+            $_SESSION['user_username'] = $user->username;
+            // This is where page redirects to after login
             redirect('posts');
         }
 
@@ -171,7 +177,7 @@
         public function logout(){
             unset($_SESSION['user_id']);
             unset($_SESSION['user_email']);
-            unset($_SESSION['user_name']);
+            unset($_SESSION['user_username']);
             session_destroy();
             redirect('users/login');
         }

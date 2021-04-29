@@ -6,17 +6,16 @@
             <p>Please fill out this form to register with us</p>
             <form action="<?php echo URLROOT; ?>/users/register" method="post">
                 <div class="form-group">
-                    <label for="name">Name: <sup>*</sup></label>
+                    <label for="username">UserName: <sup>*</sup></label>
                     <!-- if name_err then put red box around form input with BS class is-invalid -->
-                    <input type="text" name="name" class="form-control form-control-lg 
-                    <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>"
-                    value="<?php echo $data['name']; ?>">   <!-- Keeps data persisting -->
+                    <input type="text" name="username" class="form-control form-control-lg 
+                    <?php echo (!empty($data['username'])) ? 'is-invalid' : ''; ?>"
+                    value="<?php echo $data['username']; ?>">   <!-- Keeps data persisting -->
                     <!-- Display the error -->
-                    <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
+                    <span class="invalid-feedback"><?php echo $data['username_err']; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="email">Email: <sup>*</sup></label>
-                    <!-- if name_err then put red box around form input with BS class is-invalid -->
                     <input type="email" name="email" class="form-control form-control-lg 
                     <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>"
                     value="<?php echo $data['email']; ?>">   <!-- Keeps data persisting -->
@@ -25,7 +24,6 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password: <sup>*</sup></label>
-                    <!-- if name_err then put red box around form input with BS class is-invalid -->
                     <input type="password" name="password" class="form-control form-control-lg 
                     <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>"
                     value="<?php echo $data['password']; ?>">   <!-- Keeps data persisting -->
@@ -34,7 +32,6 @@
                 </div>
                 <div class="form-group">
                     <label for="confirm_password">Confirm Password: <sup>*</sup></label>
-                    <!-- if name_err then put red box around form input with BS class is-invalid -->
                     <input type="password" name="confirm_password" class="form-control form-control-lg 
                     <?php echo (!empty($data['confirm_password_err'])) ? 'is-invalid' : ''; ?>"
                     value="<?php echo $data['confirm_password']; ?>">   <!-- Keeps data persisting -->

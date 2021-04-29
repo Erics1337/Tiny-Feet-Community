@@ -5,10 +5,9 @@
             <?php flash('register_success'); ?>
             <h2>Login</h2>
             <p>Please fill in your credentials to log in</p>
-            <form action="<?php echo URLROOT; ?>/users/login" method="post">
+            <form action="<?php echo URLROOT; ?>/users/login" method="POST">
                 <div class="form-group">
-                    <label for="email">Email: <sup>*</sup></label>
-                    <!-- if name_err then put red box around form input with BS class is-invalid -->
+                    <label for="email">Email: </label>
                     <input type="email" name="email" class="form-control form-control-lg 
                     <?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>"
                     value="<?php echo $data['email']; ?>">   <!-- Keeps data persisting -->
@@ -16,8 +15,7 @@
                     <span class="invalid-feedback"><?php echo $data['email_err']; ?></span>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password: <sup>*</sup></label>
-                    <!-- if name_err then put red box around form input with BS class is-invalid -->
+                    <label for="password">Password: </label>
                     <input type="password" name="password" class="form-control form-control-lg 
                     <?php echo (!empty($data['password_err'])) ? 'is-invalid' : ''; ?>"
                     value="<?php echo $data['password']; ?>">   <!-- Keeps data persisting -->

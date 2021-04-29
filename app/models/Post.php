@@ -13,14 +13,14 @@
             // posts table has a foreign key user_id which relates to the user_id field in the users table.
             // We can use an inner join on this attribute and reassign same name fields which would otherwise create two duplicates in our newly combined table join with an alias 
             $this->db->query('SELECT *,
-                            posts.id as postId,
-                            users.id as userId,
-                            posts.created_at as postCreated,
-                            users.created_at as userCreated
-                            FROM posts
-                            INNER JOIN users
-                            ON posts.user_id = users.id
-                            ORDER BY posts.created_at DESC
+                            Posts.id as postId,
+                            Users.id as userId,
+                            Posts.created_at as postCreated,
+                            Users.created_at as userCreated
+                            FROM Posts
+                            INNER JOIN Users
+                            ON Posts.user_id = Users.id
+                            ORDER BY Posts.created_at DESC
                             ');
 
             $results = $this->db->resultSet();  // resultSet() we defined to return more than one row; returns an array
@@ -31,7 +31,7 @@
 
 /* ---------------------------- function addPost($data) ---------------------------- */
         public function addPost($data){
-            $this->db->query('INSERT INTO posts (title, user_id, body) VALUES(:title, :user_id, :body)');
+            $this->db->query('INSERT INTO Posts (title, user_id, body) VALUES(:title, :user_id, :body)');
             // Bind values
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':user_id', $data['user_id']);
@@ -48,7 +48,7 @@
 
 /* --------------------------- function updatePost($data) -------------------------- */
         public function updatePost($data){
-            $this->db->query('UPDATE posts SET title = :title, body = :body WHERE id = :id');
+            $this->db->query('UPDATE Posts SET title = :title, body = :body WHERE id = :id');
             // Bind values
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':id', $data['id']);
@@ -64,7 +64,7 @@
 
 /* ------------------------ function getPostById($id) ----------------------- */
         public function getPostById($id){
-            $this->db->query('SELECT * FROM posts WHERE id = :id');
+            $this->db->query('SELECT * FROM Posts WHERE id = :id');
             $this->db->bind(':id', $id);
             $row = $this->db->single();
 
@@ -74,7 +74,7 @@
 
 /* ----------------------------- deletePost($id) ---------------------------- */
         public function deletePost($id){
-            $this->db->query('DELETE FROM posts WHERE id = :id');
+            $this->db->query('DELETE FROM Posts WHERE id = :id');
             // Bind values
             $this->db->bind(':id', $id);
 

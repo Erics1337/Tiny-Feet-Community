@@ -6,7 +6,7 @@ define('DB_PASS', 'CS350');
 define('DB_NAME', 'cs_350');
 
 // URL Root
-define('URLROOT', 'http://localhost:8888/PHP-MVC-TinyFeet');
+define('URLROOT', 'http://localhost:8888/Tiny-Feet-Community');
 
 // App Root '/app/....'
 define('APPROOT', dirname(dirname( __FILE__)));  // Magic Constant
