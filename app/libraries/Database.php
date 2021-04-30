@@ -13,7 +13,6 @@ class Database {
     private $dbname = DB_NAME;
 
     private $dbh;
-    private $stmt;
     private $error;
 
     public function __construct(){
@@ -65,13 +64,13 @@ class Database {
     // Get result set as array of objects
     public function resultSet(){
         $this->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+        return $this->stmt->fetchAll();
     }
 
     // Get single record as object
     public function single(){
         $this->execute();
-        return $this->stmt->fetch(PDO::FETCH_OBJ);
+        return $this->stmt->fetch();
     }
 
     // Get row count

@@ -1,37 +1,55 @@
 <?php
 class User
 {
+    private $host = DB_HOST;
+    private $user = DB_USER;
+    private $pass = DB_PASS;
+    private $dbname = DB_NAME;
     private $db;
+    private $error;
 
     public function __construct()
     {
-        $this->db = new Database;
+        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
+        $options = array(
+        );
+  
+        // Create PDO instance
+        try{
+          $this->db = new PDO($dsn, $this->user, $this->pass, $options);
+        } catch(PDOException $e){
+          $this->error = $e->getMessage();
+          echo $this->error;
+        }
     }
 
     /* ------------------------------ Register user ----------------------------- */
     public function register($data)
     {
-        $this->db->query('INSERT INTO Users (username, email, password) VALUES(:username, :email, :password)');
-        // Bind values
-        $this->db->bind(':username', $data['username']);
-        $this->db->bind(':email', $data['email']);
-        $this->db->bind(':password', $data['password']);
+        $query = 'INSERT INTO Users (username, email, password) VALUES(:username, :email, :password)';
 
-        // Execute prepared statement with execute method from Database library
-        if ($this->db->execute()) {   // If executed successfully, return from function true; false if not
-            return true;
-        } else {
-            return false;
+        $stmt = $this->db->prepare($query);
+
+        // Bind values
+        $stmt->bindValue(':username', $data['username']);
+        $stmt->bindValue(':email', $data['email']);
+        $stmt->bindValue(':password', $data['password']);
+
+        if($stmt->execute()){    
         }
     }
 
     /* ------------------------------- Login User ------------------------------- */
     public function login($email, $password)
     {
-        $this->db->query('SELECT * FROM Users WHERE email = :email');
-        $this->db->bind(':email', $email);
+        $query = 'SELECT * FROM Users WHERE email = :email';
 
-        $row = $this->db->single();
+        $stmt = $this->db->prepare($query);
+
+        $stmt->bindValue(':email', $email);
+
+        $stmt->execute();
+        $row = $stmt->fetch();
 
         $hashed_password = $row->password;
         // If password matches hash, return the whole user row and if not return false
@@ -46,13 +64,13 @@ class User
     public function emailExists($email)
     {
         // From the database library call the query function to prepare statement
-        $this->db->query('SELECT * FROM Users WHERE email = :email');
+        $query = 'SELECT * FROM Users WHERE email = :email';
         // Bind values
-        $this->db->bind(':email', $email);
-
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':email', $email);
 
         // Check row if email found
-        if ($this->db->rowCount() > 0) {
+        if ($stmt->rowCount() > 0) {
             return true;
         } else return false;
     }
@@ -62,12 +80,13 @@ class User
     public function usernameExists($username)
     {
         // From the database library call the query function to prepare statement
-        $this->db->query('SELECT * FROM Users WHERE username = :username');
+        $query = 'SELECT * FROM Users WHERE username = :username';
         // Bind values
-        $this->db->bind(':username', $username);
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':username', $username);
 
         
-        if ($this->db->rowCount() > 0) {
+        if ($stmt->rowCount() > 0) {
             return true;
         } else return false;
 
@@ -77,11 +96,13 @@ class User
     public function getUserById($id)
     {
         // From the database library call the query function to prepare statement
-        $this->db->query('SELECT * FROM Users WHERE id = :id');
+        $query = 'SELECT * FROM Users WHERE id = :id';
         // Bind values
-        $this->db->bind(':id', $id);
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':id', $id);
 
-        $row = $this->db->single();
+        $stmt->execute();
+        $row = $stmt->fetch();
 
         return $row;
     }
@@ -90,11 +111,13 @@ class User
     public function getUserByName($username)
     {
         // From the database library call the query function to prepare statement
-        $this->db->query('SELECT * FROM Users WHERE username = :username');
+        $query = 'SELECT * FROM Users WHERE username = :username';
         // Bind values
-        $this->db->bind(':username', $username);
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':username', $username);
 
-        $row = $this->db->single();
+        $stmt->execute();
+        $row = $stmt->fetch();
 
         return $row;
     }
@@ -103,9 +126,11 @@ class User
     public function getAllUsersPublicInfo()
     {
         // From the database library call the query function to prepare statement
-        $this->db->query('SELECT username, email, created_at FROM Users');
+        $query = 'SELECT username, email, created_at FROM Users';
+        $stmt = $this->db->prepare($query);
 
-        $rows = $this->db->resultSet();
+        $stmt->execute();
+        $rows = $stmt->fetchAll();
 
         return $rows;
     }
