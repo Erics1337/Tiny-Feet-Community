@@ -4,17 +4,18 @@ class Pages extends Controller {
   }
 
   public function index() {
-    if(isLoggedIn()){
-      redirect('posts');
-    }
+    // if(isLoggedIn()){
+    //   redirect('posts');
+    // }
+    redirect('posts');
 
-    $data = [
-      'title' => 'Tiny Feet Community',
-      'description' => 'Community Forums to share information about Climate Action Planning'
-    ];
+    // $data = [
+    //   'title' => 'Tiny Feet Community',
+    //   'description' => 'Community Forums to share information about Climate Action Planning'
+    // ];
 
-    // pass data into the view
-    $this->view('pages/index', $data);
+    // // pass data into the view
+    // $this->view('pages/index', $data);
   }
 
   public function about() {

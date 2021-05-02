@@ -124,7 +124,7 @@
                 }
 
                 // Check for user/email
-                if($this->userModel->findUserByEmail($data['email'])){
+                if($this->userModel->emailExists($data['email'])){
                     // User found
                 } else {
                     $data['email_err'] = 'No user found';
@@ -134,11 +134,13 @@
                 if(empty($data['email_err']) && empty($data['password_err'])) {
                     // Validated
                     // Check and set logged in user
-                    $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+
+                    $user = $this->userModel->getUserByEmail($data['email']);
+
                     // If successfully loged in user object then create session
-                    if($loggedInUser){
+                    if(password_verify($data['password'], $user['password'])){
                         // Create Session variables and add data that was pulled from the database to that Session, else load login view with error
-                        $this->createUserSession($loggedInUser);
+                        $this->createUserSession($user);
                     } else {
                         // Render form with an error
                         $data['password_err'] = 'Password incorrect';
@@ -166,9 +168,9 @@
 
 /* -------------------------------- functions ------------------------------- */
         public function createUserSession($user){
-            $_SESSION['user_id'] = $user->id;
-            $_SESSION['user_email'] = $user->email;
-            $_SESSION['user_username'] = $user->username;
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_email'] = $user['email'];
+            $_SESSION['user_username'] = $user['username'];
             // This is where page redirects to after login
             redirect('posts');
         }

@@ -6,7 +6,7 @@
             <p>Please fill out this form to register with us</p>
             <form action="<?php echo URLROOT; ?>/users/register" method="post">
                 <div class="form-group">
-                    <label for="username">UserName: <sup>*</sup></label>
+                    <label for="username">Username: <sup>*</sup></label>
                     <!-- if name_err then put red box around form input with BS class is-invalid -->
                     <input type="text" name="username" class="form-control form-control-lg 
                     <?php echo (!empty($data['username'])) ? 'is-invalid' : ''; ?>"

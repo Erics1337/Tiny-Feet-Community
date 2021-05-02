@@ -101,20 +101,20 @@
                     }
                 } else {
                     // Load view with errors
-                    $this->view('posts/add', $data);
+                    $this->view('posts/edit', $data);
                 }
             } else {
                 // Get existing post from model
                 $post = $this->postModel->getPostById($id);
                 // Check for owner
-                if($post->user_id != $_SESSION['user_id']){
+                if($post['user_id'] != $_SESSION['user_id']){
                     redirect('posts');
                 }
 
                 $data = [
                     'id' => $id,
-                    'title' => $post->title,
-                    'body' => $post->body
+                    'title' => $post['title'],
+                    'body' => $post['body']
                 ];
     
                 // Load a view and pass through data array

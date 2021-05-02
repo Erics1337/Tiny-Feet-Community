@@ -1,10 +1,24 @@
 <?php
     class Post {
-        // If we want to use the database, must instantiate
+        private $host = DB_HOST;
+        private $user = DB_USER;
+        private $pass = DB_PASS;
+        private $dbname = DB_NAME;
         private $db;
+        private $error;
 
         public function __construct() {
-            $this->db = new Database;
+            $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;
+            $options = array(
+            );
+      
+            // Create PDO instance
+            try{
+              $this->db = new PDO($dsn, $this->user, $this->pass, $options);
+            } catch(PDOException $e){
+              $this->error = $e->getMessage();
+              echo $this->error;
+            }
         }
 
 /* ---------------------------- function getPosts() --------------------------- */
@@ -12,7 +26,7 @@
             // Must do a join to access user data within the Post view.
             // posts table has a foreign key user_id which relates to the user_id field in the users table.
             // We can use an inner join on this attribute and reassign same name fields which would otherwise create two duplicates in our newly combined table join with an alias 
-            $this->db->query('SELECT *,
+            $query = 'SELECT *,
                             Posts.id as postId,
                             Users.id as userId,
                             Posts.created_at as postCreated,
@@ -21,24 +35,29 @@
                             INNER JOIN Users
                             ON Posts.user_id = Users.id
                             ORDER BY Posts.created_at DESC
-                            ');
+                            ';
 
-            $results = $this->db->resultSet();  // resultSet() we defined to return more than one row; returns an array
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
 
-            return $results;
+            if ($stmt->execute()){
+                $results = $stmt->fetchAll();
+                return $results;
+            } else return false;
         }
 
 
 /* ---------------------------- function addPost($data) ---------------------------- */
         public function addPost($data){
-            $this->db->query('INSERT INTO Posts (title, user_id, body) VALUES(:title, :user_id, :body)');
+            $query = 'INSERT INTO Posts (title, user_id, body) VALUES(:title, :user_id, :body)';
+            $stmt = $this->db->prepare($query);
             // Bind values
-            $this->db->bind(':title', $data['title']);
-            $this->db->bind(':user_id', $data['user_id']);
-            $this->db->bind(':body', $data['body']);
+            $stmt->bindValue(':title', $data['title']);
+            $stmt->bindValue(':user_id', $data['user_id']);
+            $stmt->bindValue(':body', $data['body']);
 
             // Execute prepared statement with execute method from Database library
-            if($this->db->execute()){   // If executed successfully, return from function true; false if not
+            if($stmt->execute()){   // If executed successfully, return from function true; false if not
                 return true;
             } else {
                 return false;
@@ -48,14 +67,16 @@
 
 /* --------------------------- function updatePost($data) -------------------------- */
         public function updatePost($data){
-            $this->db->query('UPDATE Posts SET title = :title, body = :body WHERE id = :id');
+            $query = 'UPDATE Posts SET title = :title, body = :body WHERE id = :id';
+            $stmt = $this->db->prepare($query);
+
             // Bind values
-            $this->db->bind(':title', $data['title']);
-            $this->db->bind(':id', $data['id']);
-            $this->db->bind(':body', $data['body']);
+            $stmt->bindValue(':title', $data['title']);
+            $stmt->bindValue(':id', $data['id']);
+            $stmt->bindValue(':body', $data['body']);
 
             // Execute prepared statement with execute method from Database library
-            if($this->db->execute()){   // If executed successfully, return from function true; false if not
+            if($stmt->execute()){   // If executed successfully, return from function true; false if not
                 return true;
             } else {
                 return false;
@@ -64,22 +85,27 @@
 
 /* ------------------------ function getPostById($id) ----------------------- */
         public function getPostById($id){
-            $this->db->query('SELECT * FROM Posts WHERE id = :id');
-            $this->db->bind(':id', $id);
-            $row = $this->db->single();
+            $query = 'SELECT * FROM Posts WHERE id = :id';
+            $stmt = $this->db->prepare($query);
 
-            return $row;
+            $stmt->bindValue(':id', $id);
+            if ($stmt->execute()){
+                $row = $stmt->fetch();
+                return $row;
+            } else return false;
         }
 
 
 /* ----------------------------- deletePost($id) ---------------------------- */
         public function deletePost($id){
-            $this->db->query('DELETE FROM Posts WHERE id = :id');
+            $query = 'DELETE FROM Posts WHERE id = :id';
             // Bind values
-            $this->db->bind(':id', $id);
+            $stmt = $this->db->prepare($query);
+
+            $stmt->bindValue(':id', $id);
 
             // Execute prepared statement with execute method from Database library
-            if($this->db->execute()){   // If executed successfully, return from function true; false if not
+            if($stmt->execute()){   // If executed successfully, return from function true; false if not
                 return true;
             } else {
                 return false;

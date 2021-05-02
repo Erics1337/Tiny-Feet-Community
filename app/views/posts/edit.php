@@ -1,8 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<a href="<?php echo URLROOT; ?>/posts" class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
+<a href="<?php echo URLROOT; ?>/posts/show/<?php echo $data['id']; ?>" class="btn btn-light"><i class="fa fa-arrow-left"></i> Back</a>
 <div class="card card-body bg-light mt-5">
     <h2>Edit Post</h2>
-    <p>Edit a post with this form</p>
+    <p>Edit post <?php echo $data['id']; ?> with this form</p>
     <form action="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['id']; ?>" method="post">
 
         <div class="form-group">

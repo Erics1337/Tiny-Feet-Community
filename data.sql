@@ -4,27 +4,27 @@ DROP TABLE IF EXISTS `Posts`;
 
 CREATE TABLE `Users` (
   `id` int(11) NOT NULL,
-  `username` varchar(22) DEFAULT NULL,
-  `email` varchar(22) DEFAULT NULL,
-  -- `firstName` varchar(22) DEFAULT NULL,
-  -- `lastName` varchar(22) DEFAULT NULL,
-  -- `city` varchar(22) DEFAULT NULL,
-  -- `county` varchar(22) DEFAULT NULL,
-  -- `zip` int(5) DEFAULT NULL,
-  -- `theme` tinyint(1) DEFAULT 0,
-  -- `profilePicUrl` varchar(60) DEFAULT NULL,
-  `password` varchar(22) DEFAULT NULL,
+  `username` varchar(60) DEFAULT NULL,
+  `email` varchar(60) DEFAULT NULL,
+  `firstName` varchar(60) DEFAULT NULL,
+  `lastName` varchar(60) DEFAULT NULL,
+  `city` varchar(60) DEFAULT NULL,
+  `county` varchar(60) DEFAULT NULL,
+  `zip` int(5) DEFAULT NULL,
+  `theme` tinyint(1) DEFAULT 0,
+  `profilePicUrl` varchar(60) DEFAULT NULL,
+  `password` varchar(60) DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `Posts` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,  
-  -- `zip` int(5) DEFAULT NULL,
-  -- `city` varchar(255) DEFAULT NULL,
-  -- `county` varchar(255) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
+  `user_id` int(60) DEFAULT NULL,  
+  `zip` int(5) DEFAULT NULL,
+  `city` varchar(60) DEFAULT NULL,
+  `county` varchar(60) DEFAULT NULL,
+  `title` varchar(60) DEFAULT NULL,
   `body` text,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -77,8 +77,8 @@ CREATE TABLE `Posts` (
 
 CREATE TABLE `Users` (
   `id` int(11) NOT NULL,
-  `username` varchar(22) DEFAULT NULL,
-  `email` varchar(22) DEFAULT NULL,
+  `username` varchar(60) DEFAULT NULL,
+  `email` varchar(60) DEFAULT NULL,
   `password` varchar(60) DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
