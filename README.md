@@ -54,6 +54,7 @@ Create a database called “cs_350” w/ username “student”, password “CS3
 
 * PHP
 * Bootstrap CSS 4.0 & Font Awesome Icons
+* Bootswatch themes and Bootdey snippets
 
 
 
