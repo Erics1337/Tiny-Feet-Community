@@ -1,27 +1,62 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+<?php flash('post_message'); ?>
 <a href="<?php echo URLROOT; ?>/posts" class="btn btn-light"><i class="fa fa-arrow-left"></i> Back</a>
 <br>
-<div class="card card-body mt-5 mb-3">
-    <h1><?php echo $data['post']['title']; ?></h1>
-    <div class="bg-secondary text-white p-2 mb-3">
-        Written by <?php echo $data['user']['name']; ?> on <?php echo $data['post']['created_at']; ?>
+<br>
+<div class="card gedf-card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="mr-2">
+                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                </div>
+                <div class="ml-2">
+                    <div class="h5 m-0">@<?php echo $data['user']['username']; ?> </div>
+                    <div class="h7 text-muted"><?php echo $data['user']['fullName']; ?></div>
+                </div>
+            </div>
+            <div>
+                <?php if ($data['post']['user_id'] == $_SESSION['user_id']) : ?>
+                    <div class="dropdown">
+                        <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
+                            <div class="h6 dropdown-header">Configuration</div>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']['id']; ?>">edit</a>
+                            <form id="deleteForm" action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']['id']; ?>" method="post">
+                                <a class="dropdown-item" onclick="document.getElementById('deleteForm').submit();">delete</a>
+                            </form>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
-    <p><?php echo $data['post']['body']; ?></p>
+    <div class="card-body">
+        <a class="card-link" href="<?php echo URLROOT; ?>/posts/show/<?php echo $data['post']['postId']; ?>">
+            <h2 class="card-title"><?php echo $data['post']['title']; ?></h2>
+        </a>
+        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> <?php echo time_elapsed_string($data['post']['postCreated'], true) ?></div>
+        <p class="card-text">
+            <?php echo $data['post']['body']; ?>
+        </p>
+    </div>
+    <div class="card-footer">
+        <!-- <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a> -->
+        <a href="https://www.facebook.com/sharer.php?u=<?php echo URLROOT; ?>/posts/show/<?php echo $post['postId']; ?>" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+        <?php if ($data['post']['user_id'] == $_SESSION['user_id']) : ?>
 
-    <!-- We want to have the logged in user be able to edit their post so we check if the post user_id is equal to the session user_id -->
-    <!-- And all the code in between the ternery if statement is run (adds "edit" and "delete" buttons), otherwise nothing is run -->
-    <?php if ($data['post']['user_id'] == $_SESSION['user_id']) : ?>
-        <hr>
-        <div class="row">
-        <div class="col">
-            <a role="button" href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']['id']; ?>" class="btn btn-dark">Edit</a>
-        </div>
-        <div class="col">
-        <form  class="float-right" action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']['id']; ?>" method="post">
-            <input type="submit" value="Delete" class="btn btn-danger">
-        </form>
-        </div>
-        </div>
+            <form class="card-link float-right" style="display: inline;" id="deleteForm" action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']['postId']; ?>" method="post">
+                <a href="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']['id']; ?>" class="card-link float-right" onclick="document.getElementById('deleteForm').submit();"><i class="fa fa-trash-alt"></i> Delete</a>
+            </form>
+            <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']['id']; ?>" class="card-link float-right"><i class="fa fa-edit"></i> Edit</a>
+
+        <?php endif; ?>
+
+    </div>
 </div>
-<?php endif; ?>
+
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>

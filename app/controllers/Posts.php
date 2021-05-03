@@ -8,15 +8,37 @@
         }
 
         public function index(){
-            // Get posts
             $posts = $this->postModel->getPosts();
-
             $data = [
-                'posts' => $posts
+                'posts' => $posts,
+                'topic_err' => ''
+            ];
+                        // Load a view and pass through data array
+            $this->view('posts/index', $data);
+        }
+
+/* --------------------------- posts/topic/$topic --------------------------- */
+
+        public function topic($topic){
+            if ($topic == 'all'){
+                redirect('posts');
+            } 
+            // else $posts = $this->postModel->getPostsByTopic($topic);
+
+            else if($this->postModel->topicExists($topic)){
+                $posts = $this->postModel->getPostsByTopic($topic);
+            } 
+            else{
+                // Topic Doesnt exist
+            }
+            $data = [
+                'posts' => $posts,
+                'topic_err' => ''
             ];
             
             // Load a view and pass through data array
             $this->view('posts/index', $data);
+
         }
 
         
@@ -26,6 +48,7 @@
                 // Sanitize POST array
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING); // Get POST data and sanitize
                 $data = [                                                        // Add data stuff
+                    'topic' => $_POST['topic'],
                     'title' => trim($_POST['title']),
                     'body' => trim($_POST['body']),
                     'user_id' => $_SESSION['user_id'],
@@ -112,6 +135,7 @@
                 }
 
                 $data = [
+                    'post' => $post,
                     'id' => $id,
                     'title' => $post['title'],
                     'body' => $post['body']
@@ -125,13 +149,15 @@
 /* ------------------------------  /posts/show/$id ----------------------------- */
         public function show($id){
             $post = $this->postModel->getPostById($id);
-            $user = $this->userModel->getUserById($post->user_id);
+            $user = $this->userModel->getUserById($post['user_id']);
+
+            // print_r($post);
 
             $data = [
                 'post' => $post,
                 'user' => $user
             ];
-
+            
             $this->view('posts/show', $data);
         }
 

@@ -4,116 +4,44 @@ DROP TABLE IF EXISTS `Posts`;
 
 CREATE TABLE `Users` (
   `id` int(11) NOT NULL,
-  `username` varchar(60) DEFAULT NULL,
-  `email` varchar(60) DEFAULT NULL,
-  `firstName` varchar(60) DEFAULT NULL,
-  `lastName` varchar(60) DEFAULT NULL,
-  `city` varchar(60) DEFAULT NULL,
-  `county` varchar(60) DEFAULT NULL,
+  `username` varchar(200) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `fullName` varchar(200) DEFAULT NULL,
+  `phone` varchar(200) DEFAULT NULL,
   `zip` int(5) DEFAULT NULL,
-  `theme` tinyint(1) DEFAULT 0,
-  `profilePicUrl` varchar(60) DEFAULT NULL,
-  `password` varchar(60) DEFAULT NULL,
+  `city` varchar(200) DEFAULT NULL,
+  `county` varchar(200) DEFAULT NULL,
+  `state` varchar(200) DEFAULT NULL,
+  `about` text,
+  `contributions` int(5) DEFAULT 0,
+  `theme` varchar(5) DEFAULT 'off',
+  -- `profilePicUrl` varchar(200) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `Posts` (
   `id` int(11) NOT NULL,
-  `user_id` int(60) DEFAULT NULL,  
-  `zip` int(5) DEFAULT NULL,
-  `city` varchar(60) DEFAULT NULL,
-  `county` varchar(60) DEFAULT NULL,
-  `title` varchar(60) DEFAULT NULL,
+  `user_id` int(200) DEFAULT NULL,
+  `topic` varchar(50) DEFAULT NULL,
+  `title` varchar(200) DEFAULT NULL,
   `body` text,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
-ALTER TABLE `Posts`
-  ADD PRIMARY KEY (`id`);
-
 
 ALTER TABLE `Users`
-  ADD PRIMARY KEY (`id`);
-
-
-ALTER TABLE `Posts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`),
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 
-ALTER TABLE `Users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `Users`
-ADD UNIQUE (username);
-
-ALTER TABLE Posts
-ADD FOREIGN KEY (user_id) REFERENCES Users(ID);
-
-
-
-
-
-
-
-
-
-
-CREATE TABLE `Posts` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `body` text,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Users`
---
-
-CREATE TABLE `Users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(60) DEFAULT NULL,
-  `email` varchar(60) DEFAULT NULL,
-  `password` varchar(60) DEFAULT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `Posts`
---
 ALTER TABLE `Posts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `Users`
---
-ALTER TABLE `Users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `Posts`
---
-ALTER TABLE `Posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Users`
---
-ALTER TABLE `Users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
-
-
+  ADD PRIMARY KEY (`id`),
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD FOREIGN KEY (user_id) REFERENCES Users(ID);

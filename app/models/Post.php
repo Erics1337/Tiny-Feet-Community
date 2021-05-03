@@ -46,12 +46,54 @@
             } else return false;
         }
 
+/* ---------------------------- function getPostsByTopic() --------------------------- */
+        public function getPostsByTopic($topic){
+            $query = 'SELECT *,
+                            Posts.id as postId,
+                            Users.id as userId,
+                            Posts.created_at as postCreated,
+                            Users.created_at as userCreated
+                            FROM Posts
+                            INNER JOIN Users
+                            ON Posts.user_id = Users.id
+                            WHERE Posts.topic = :topic 
+                            ORDER BY Posts.created_at DESC
+                            ';
 
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':topic', $topic);
+            $stmt->execute();
+
+            if ($stmt->execute()){
+                $results = $stmt->fetchAll();
+                return $results;
+            } else return false;
+        }
+
+
+/* --------------------------- Find if user exists by email --------------------------- */
+        public function topicExists($topic)
+        {
+            // From the database library call the query function to prepare statement
+            $query = 'SELECT * FROM Posts WHERE topic = :topic';
+            // Bind values
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':topic', $topic);
+            $stmt->execute();
+
+
+            // Check row if email found
+            if ($stmt->rowCount() > 0) {
+                return true;
+            } else return false;
+        }
 /* ---------------------------- function addPost($data) ---------------------------- */
         public function addPost($data){
-            $query = 'INSERT INTO Posts (title, user_id, body) VALUES(:title, :user_id, :body)';
+            $query = 'INSERT INTO Posts (topic, title, user_id, body) VALUES(:topic, :title, :user_id, :body);
+                        UPDATE Users SET contributions = contributions + 1 WHERE id = :user_id;';
             $stmt = $this->db->prepare($query);
             // Bind values
+            $stmt->bindValue(':topic', $data['topic']);
             $stmt->bindValue(':title', $data['title']);
             $stmt->bindValue(':user_id', $data['user_id']);
             $stmt->bindValue(':body', $data['body']);

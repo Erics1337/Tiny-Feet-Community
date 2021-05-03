@@ -13,6 +13,7 @@ CREATE TABLE `Users` (
   `county` varchar(200) DEFAULT NULL,
   `state` varchar(200) DEFAULT NULL,
   `about` text,
+  `contributions` int(5) DEFAULT 0,
   `theme` varchar(5) DEFAULT 'off',
   `profilePicUrl` varchar(200) DEFAULT NULL,
   `password` varchar(200) DEFAULT NULL,
@@ -22,11 +23,9 @@ CREATE TABLE `Users` (
 
 CREATE TABLE `Posts` (
   `id` int(11) NOT NULL,
-  `user_id` int(200) DEFAULT NULL,  
-  `zip` int(5) DEFAULT NULL,
-  `city` varchar(200) DEFAULT NULL,
-  `county` varchar(200) DEFAULT NULL,
+  `user_id` int(200) DEFAULT NULL,
   `title` varchar(200) DEFAULT NULL,
+  `topic` varchar(50) DEFAULT NULL,
   `body` text,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

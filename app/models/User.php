@@ -132,6 +132,7 @@ class User
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id', $id);
 
+
         $stmt->execute();
         $row = $stmt->fetch();
 
@@ -157,7 +158,7 @@ class User
     public function getAllUsersPublicInfo()
     {
         // From the database library call the query function to prepare statement
-        $query = 'SELECT username, email, created_at, fullName, phone, city, county, zip, state, about, profilePicUrl FROM Users';
+        $query = 'SELECT id, username, email, created_at, fullName, phone, city, county, zip, contributions, state, about FROM Users';
         $stmt = $this->db->prepare($query);
 
         $stmt->execute();

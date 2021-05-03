@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div class="container mt-3 mb-4">
+<div class="container">
     <div class="col-lg-9 mt-4 mt-lg-0">
         <div class="row">
             <div class="col-md-12">
@@ -18,7 +18,7 @@
                         <thead>
                             <tr>
                                 <th>Community Member</th>
-                                <th class="text-center">Status</th>
+                                <th class="text-center">Contributions</th>
                                 <th class="action text-right">Action</th>
                             </tr>
                         </thead>
@@ -47,13 +47,17 @@
                                     </td>
                                     <td class="candidate-list-favourite-time text-center">
                                         <a class="candidate-list-favourite order-2 text-danger" href="#"><i class="fas fa-heart"></i></a>
-                                        <span class="candidate-list-time order-1">Shortlisted</span>
+                                        <span class="candidate-list-time order-1"><?php echo $user['contributions']; ?></span>
                                     </td>
                                     <td>
                                         <ul class="list-unstyled mb-0 d-flex justify-content-end">
-                                            <li><a href="#" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
+                                            <li><a href="<?php echo URLROOT; ?>/profiles/user/<?php echo $user['username']; ?>" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
+                                            <?php if ($user['id'] == $_SESSION['user_id']) : ?>
+
                                             <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
                                             <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+
+                                            <?php endif ?>
                                         </ul>
                                     </td>
                                 </tr>
