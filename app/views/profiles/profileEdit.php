@@ -11,8 +11,8 @@
 								<div class="user-avatar">
 									<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="User Profile Pic">
 								</div>
-								<h5 class="user-name"><?php echo $data['user']['username'] ?></h5>
-								<h6 class="user-email"><?php echo $data['user']['email'] ?></h6>
+								<h5 class="user-name"><?php echo $data['username'] ?></h5>
+								<h6 class="user-email"><?php echo $data['email'] ?></h6>
 							</div>
 							<div class="about">
 								<h5>About</h5>
@@ -39,26 +39,26 @@
 								<div class="form-group">
 									<label for="username">Username<sup>*</sup></label>
 									<input required type="text" placeholder="Username Required" class="form-control 
-								<?php echo (!empty($data['username_err'])) ? 'is-invalid' : ''; ?>" name="username" value="<?php echo $data['user']['username'] ?>">
+								<?php echo (!empty($data['username_err'])) ? 'is-invalid' : ''; ?>" name="username" value="<?php echo $data['username'] ?>">
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 								<div class="form-group">
 									<label for="email">Email<sup>*</sup></label>
-									<input required type="email" placeholder="Email Required" class="form-control
-								<?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" name="email" value="<?php echo $data['user']['email'] ?>">
+									<input required type="email" placeholder="Email Required" class="form-control 
+								<?php echo (!empty($data['email_err'])) ? 'is-invalid' : ''; ?>" name="email" value="<?php echo $data['email'] ?>">
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 								<div class="form-group">
 									<label for="fullName">Full Name</label>
-									<input type="text" class="form-control" name="fullName" placeholder="No Full Name" value="<?php echo $data['user']['fullName'] ?>">
+									<input type="text" class="form-control" name="fullName" placeholder="No Full Name" value="<?php echo $data['fullName'] ?>">
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 								<div class="form-group">
 									<label for="phone">Phone</label>
-									<input type="text" class="form-control" name="phone" placeholder="No Phone Number" value="<?php echo $data['user']['phone'] ?>">
+									<input type="text" class="form-control" name="phone" placeholder="No Phone Number" value="<?php echo $data['phone'] ?>">
 								</div>
 							</div>
 
@@ -70,32 +70,32 @@
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 								<div class="form-group">
 									<label for="street">County</label>
-									<input type="text" class="form-control" name="county" placeholder="No County" value="<?php echo $data['user']['county'] ?>">
+									<input type="text" class="form-control" name="county" placeholder="No County" value="<?php echo $data['county'] ?>">
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 								<div class="form-group">
 									<label for="city">City</label>
-									<input type="text" class="form-control" name="city" placeholder="No City" value="<?php echo $data['user']['city'] ?>">
+									<input type="text" class="form-control" name="city" placeholder="No City" value="<?php echo $data['city'] ?>">
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 								<div class="form-group">
 									<label for="state">State</label>
-									<input type="text" class="form-control" name="state" placeholder="No State" value="<?php echo $data['user']['state'] ?>">
+									<input type="text" class="form-control" name="state" placeholder="No State" value="<?php echo $data['state'] ?>">
 								</div>
 							</div>
 							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 								<div class="form-group">
 									<label for="zip">Zip Code</label>
-									<input type="number" step="00000" class="form-control" name="zip" placeholder="No Zip Code" value="<?php echo $data['user']['zip'] ?>">
+									<input type="number" step="00000" class="form-control" name="zip" placeholder="No Zip Code" value="<?php echo $data['zip'] ?>">
 								</div>
 							</div>
 						</div>
 						<div class="row gutters">
 							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 								<div class="text-right">
-									<a href="<?php echo URLROOT; ?>/profiles/user/<?php echo $data['user']['username']; ?>" id="cancelButton" name="cancelButton" class="btn btn-secondary">Cancel</a>
+									<a href="<?php echo URLROOT; ?>/profiles/user/<?php echo $data['username']; ?>" id="cancelButton" name="cancelButton" class="btn btn-secondary">Cancel</a>
 									<input type="submit" id="submit" name="submit" value="Update" class="btn btn-primary"></input>
 								</div>
 							</div>

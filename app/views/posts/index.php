@@ -7,7 +7,24 @@
 
 <div class="container">
 <div class="main-body p-0">
+
+            <div class="inner-main-header">
+                <h3>Posts</h3>
+                <!-- <select class="custom-select custom-select-sm w-auto mr-1">
+                    <option selected="">Latest</option>
+                    <option value="1">Popular</option>
+                    <option value="3">Solved</option>
+                    <option value="3">Unsolved</option>
+                    <option value="3">No Replies Yet</option>
+                </select>
+                <span class="input-icon input-icon-sm ml-auto w-auto">
+                    <input type="text" class="form-control form-control-sm bg-gray-200 border-gray-200 shadow-none mb-4 mt-4" placeholder="Search forum" />
+                </span> -->
+            </div>
+            <!-- /Inner main header -->
     <div class="inner-wrapper">
+
+    
         <!-- Inner sidebar -->
         <div class="inner-sidebar">
             <!-- Inner sidebar header -->
@@ -15,10 +32,7 @@
             <!-- <button class="btn btn-primary has-icon btn-block" type="button" data-toggle="modal" data-target="#threadModal"> -->
 
                 <a href="<?php echo URLROOT; ?>/posts/add" class="btn btn-primary has-icon btn-block">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus mr-2">
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
+                    <span style="font-weight: bold;">+ </span>
                     NEW DISCUSSION
                 </a>
             </div>
@@ -54,21 +68,7 @@
 
         <!-- Inner main -->
         <div class="inner-main">
-            <div class="inner-main-header">
-                <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="#" data-toggle="inner-sidebar"><i class="material-icons">arrow_forward_ios</i></a>
-                <h3>Posts</h3>
-                <!-- <select class="custom-select custom-select-sm w-auto mr-1">
-                    <option selected="">Latest</option>
-                    <option value="1">Popular</option>
-                    <option value="3">Solved</option>
-                    <option value="3">Unsolved</option>
-                    <option value="3">No Replies Yet</option>
-                </select>
-                <span class="input-icon input-icon-sm ml-auto w-auto">
-                    <input type="text" class="form-control form-control-sm bg-gray-200 border-gray-200 shadow-none mb-4 mt-4" placeholder="Search forum" />
-                </span> -->
-            </div>
-            <!-- /Inner main header -->
+
 
             <!-- Inner main body -->
 

@@ -28,8 +28,21 @@ class Profiles extends Controller
         $user = $this->userModel->getUserByName($username);
 
         $data = [
-            'user' => $user
+            'id' => $user['id'],
+            'username' => $user['username'],
+            'email' => $user['email'],
+            'fullName' => $user['fullName'],
+            'phone' => $user['phone'],
+            'zip' => $user['zip'],
+            'city' => $user['city'],
+            'county' => $user['county'],
+            'state' => $user['state'],
+            'about' => $user['about'],
+            'theme' => $user['theme'],
+            'username_err' => '',
+            'email_err' => ''
         ];
+
         // Load a view and pass through data array
         $this->view('profiles/profile', $data);
     }
@@ -63,8 +76,10 @@ class Profiles extends Controller
                 $data['email_err'] = 'Please enter email';
             } else {
                 // Check if email already exists with this model function
-                if ($_SESSION['user_email'] !== $data['email'] && $this->userModel->emailExists($data['email'])) {
-                    $data['email_err'] = 'An account with that username already exists';
+                if ($data['email'] != $_SESSION['user_email']) {
+                    if($this->userModel->emailExists($data['email'])){
+                        $data['email_err'] = 'An account with that username already exists';
+                    }
                 }
             }
             // Validate username
@@ -72,7 +87,7 @@ class Profiles extends Controller
                 $data['username_err'] = 'Please enter username';
             } else {
                 // Check if email already exists with this model function
-                if ($_SESSION['user_username'] != $data['username']){
+                if ($data['username'] != $_SESSION['user_username']){
                     if ($this->userModel->usernameExists($data['username'])) {
                         $data['username_err'] = 'That username is already taken';
                     }
@@ -84,15 +99,15 @@ class Profiles extends Controller
                 // Validated: passed all tests
                 // Register user
 
-                print_r($data);
 
-                if ($this->userModel->update($data)) {
+                if ($this->userModel->update($data, $_SESSION['user_username'])) {
                     // Flash message
                     flash('register_success', 'Account details have been updated');
 
                     $this->updateUserSession($data);
 
                     // Redirect to potential new username
+
                     redirect('profiles/user/'.$data['username']);
 
                     // die('Great Success!');
@@ -116,11 +131,22 @@ class Profiles extends Controller
             }
 
 
+
             $data = [
-                'user' => $user,
+                'username' => $user['username'],
+                'email' => $user['email'],
+                'fullName' => $user['fullName'],
+                'phone' => $user['phone'],
+                'zip' => $user['zip'],
+                'city' => $user['city'],
+                'county' => $user['county'],
+                'state' => $user['state'],
+                'about' => $user['about'],
+                'theme' => $user['theme'],
                 'username_err' => '',
                 'email_err' => ''
             ];
+
 
             // Load a view and pass through data array
             $this->view('profiles/profileEdit', $data);

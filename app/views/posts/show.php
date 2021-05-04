@@ -34,10 +34,12 @@
         </div>
     </div>
     <div class="card-body">
-        <a class="card-link" href="<?php echo URLROOT; ?>/posts/show/<?php echo $data['post']['postId']; ?>">
+        <!-- <a class="card-link" href="<?php echo URLROOT; ?>/posts/show/<?php echo $data['post']['postId']; ?>"> -->
             <h2 class="card-title"><?php echo $data['post']['title']; ?></h2>
-        </a>
-        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i> <?php echo time_elapsed_string($data['post']['postCreated'], true) ?></div>
+            <h6 class="card-text">Posted <i class="fa fa-clock-o"></i> <?php echo time_elapsed_string($data['post']['postCreated'], true) ?> in 
+            <a href="<?php echo URLROOT; ?>/posts/topic/<?php echo $data['post']['topic']; ?>"/><?php echo $data['post']['topic']; ?></a></span></h6>
+        <!-- </a> -->
+        <div class="text-muted h7 mb-2"> </div>
         <p class="card-text">
             <?php echo $data['post']['body']; ?>
         </p>

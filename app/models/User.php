@@ -43,13 +43,14 @@ class User
     }
 
     /* ------------------------------ Update user ----------------------------- */
-    public function update($data)
+    public function update($data, $oldUsername)
     {
         $query = 'UPDATE Users SET username = :username, email=:email, fullName=:fullName, phone=:phone, zip=:zip, city=:city, county=:county, state=:state, about=:about, theme=:theme
-                WHERE username = :username;';
+                WHERE username = :oldUsername;';
 
         $stmt = $this->db->prepare($query);
 
+        $stmt->bindValue(':oldUsername', $oldUsername);
         $stmt->bindValue(':username', $this->nullable($data['username']));
         $stmt->bindValue(':email', $this->nullable($data['email']));
         $stmt->bindValue(':fullName', $this->nullable($data['fullName']));
