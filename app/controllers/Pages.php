@@ -7,24 +7,20 @@ class Pages extends Controller {
     // if(isLoggedIn()){
     //   redirect('posts');
     // }
-    redirect('posts');
 
-    // $data = [
-    //   'title' => 'Tiny Feet Community',
-    //   'description' => 'Community Forums to share information about Climate Action Planning'
-    // ];
-
+    // redirect('posts');
+  
     // // pass data into the view
-    // $this->view('pages/index', $data);
+    $this->view('pages/index');
   }
 
-  public function about() {
-    $data = [
-      'title' => 'About Us',
-      'description' => 'App to share posts with other users'
+  // public function about() {
+  //   $data = [
+  //     'title' => 'About Us',
+  //     'description' => 'App to share posts with other users'
 
-    ];
+  //   ];
 
-    $this->view('pages/about', $data);
-  }
+  //   $this->view('pages/about', $data);
+  // }
 }

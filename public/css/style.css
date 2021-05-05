@@ -444,7 +444,20 @@ body {
   background-size: 1020px 780px;
   background-repeat: no-repeat;
 }
-
+/* .aboutFooter {
+  background-image: url(../img/leafFeet.jpeg);
+  background-size: 400px 700px;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 700px;
+} */
+#leafFeet {
+  transform: rotate(-30deg);
+  position: absolute;
+  left: 25%;
+  top: 1910px;
+  z-index: 1;
+}
 
 .columnsHeader {
   padding: 2em;

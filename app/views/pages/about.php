@@ -11,7 +11,7 @@
         <h4>This is a community of eco-consious people as well as environmental management professionals who seeek to
           offer information and advice to aid in developing your community's climate action plan</h4>
         <br>
-        <p><a class="btn btn-primary btn-lg" href="www.tinyfeet.app" role="button">Try the Toolkit »</a></p>
+        <p><a class="btn btn-primary btn-lg" href="https://www.tinyfeet.app" role="button">Try the Toolkit »</a></p>
       </div>
 
       <div class="container">
@@ -26,17 +26,17 @@
           <div class="col-md-4">
             <h2>Bar Chart</h2>
             <p>View greenhouse gas data produced by your community and compare it to other communities in Colorado. </p>
-            <p><a class="btn btn-secondary" href="www.tinyfeet.app/emissions/chart" role="button">View page »</a></p>
+            <p><a class="btn btn-secondary" href="https://www.tinyfeet.app/emissions/chart" role="button">View page »</a></p>
           </div>
           <div class="col-md-4">
             <h2>Region Map</h2>
             <p>Visualize greenhouse gas emission data in the form of a pie chart for each zip code or county region in Colorado. </p>
-            <p><a class="btn btn-secondary" href="www.tinyfeet.app/emissions/map" role="button">View page »</a></p>
+            <p><a class="btn btn-secondary" href="https://www.tinyfeet.app/emissions/map" role="button">View page »</a></p>
           </div>
           <div class="col-md-4">
             <h2>Recommendations Filter</h2>
             <p>Get a list of climate action planning solutions tailored for your community's specific needs and interests.</p>
-            <p><a class="btn btn-secondary" href="www.tinyfeet.app/recommendations" role="button">View page »</a></p>
+            <p><a class="btn btn-secondary" href="https://www.tinyfeet.app/recommendations" role="button">View page »</a></p>
           </div>
         </div>
 

@@ -11,10 +11,13 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
+          <a class="nav-link" href="<?php echo URLROOT; ?>/posts">Posts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/profiles">Profiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.tinyfeet.app">Toolkit</a>
         </li>
       </ul>
 
