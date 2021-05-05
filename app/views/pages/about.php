@@ -1,39 +1,75 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <main role="main">
 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron" style="background-image: url(<?php echo URLROOT; ?>/public/img/logoTransparant.png); background-size: 100%;">
-        <div class="container">
-          <h1 class="display-3">Welcome to the Tiny Feet Community!</h1>
-          <p>This is a community of eco-consious people as well as environmental management professionals who seeek to 
-          offer information and advice to aid in developing your community's climate action plan</p>
-          <p><a class="btn btn-primary btn-lg" href="www.tinyfeet.app" role="button">Learn more »</a></p>
-        </div>
+
+
+  <div class="container aboutContainer" style="background-color: white;">
+    <div class="jumbotron">
+      <div class="container" style="height: 620px;">
+        <h1 class="display-3">Welcome to the Tiny Feet Community!</h1>
+        <br>
+        <h4>This is a community of eco-consious people as well as environmental management professionals who seeek to
+          offer information and advice to aid in developing your community's climate action plan</h4>
+        <br>
+        <p><a class="btn btn-primary btn-lg" href="www.tinyfeet.app" role="button">Try the Toolkit »</a></p>
       </div>
 
       <div class="container">
+
+
+
         <!-- Example row of columns -->
+
+        <h1 class="columnsHeader text-center">What Tiny Feet Toolkit can do for your community</h1>
+
         <div class="row">
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            <h2>Bar Chart</h2>
+            <p>View greenhouse gas data produced by your community and compare it to other communities in Colorado. </p>
+            <p><a class="btn btn-secondary" href="www.tinyfeet.app/emissions/chart" role="button">View page »</a></p>
           </div>
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            <h2>Region Map</h2>
+            <p>Visualize greenhouse gas emission data in the form of a pie chart for each zip code or county region in Colorado. </p>
+            <p><a class="btn btn-secondary" href="www.tinyfeet.app/emissions/map" role="button">View page »</a></p>
           </div>
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+            <h2>Recommendations Filter</h2>
+            <p>Get a list of climate action planning solutions tailored for your community's specific needs and interests.</p>
+            <p><a class="btn btn-secondary" href="www.tinyfeet.app/recommendations" role="button">View page »</a></p>
           </div>
         </div>
 
-        <hr>
+        <div class="row">
+          <h1 class="columnsHeader text-center">Try posting about issues effecting your community in our forums</h1>
+          <div class="col-md-auto">
+            <img src="<?php echo URLROOT; ?>/public/img/engineer.jpg" height="300"></img>
+            <br>
+          </div>
+          <div class="col text-left my-auto">
+            <h2>Use the toolkit to identify the unique problems and solutions facing your community in reducing GHG emissions</h2>
+            <h6>Find advice here from other Tiny Feet community members on how to implement the recommended actions for your area in your community!</h6>
 
-      </div> <!-- /container -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-right my-auto">
+            <h2>Submit a link to data you found online!</h2>
+            <h6>Help us grow our database!</h6>
+            <br>
+          </div>
+          <div class="col-md-auto">
+            <img src="<?php echo URLROOT; ?>/public/img/workers.jpg" height="300"></img>
 
-    </main>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href='https://www.freepik.com/vectors/infographic'>Infographic vectors created by vectorjuice - www.freepik.com</a>
+
+  </div> <!-- /container -->
+
+</main>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

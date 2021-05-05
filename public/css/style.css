@@ -307,7 +307,6 @@ body {
 
 /* ---------------------------- Forum Front Page ---------------------------- */
 
-
 .inner-wrapper {
   position: relative;
   height: calc(100vh - 3.5rem);
@@ -327,7 +326,7 @@ body {
   flex-direction: column;
 }
 .inner-sidebar {
-    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.06);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.06);
 
   left: 0;
   width: 235px;
@@ -348,7 +347,6 @@ body {
   padding: 1rem;
   flex-shrink: 0;
   margin-top: 10px;
-
 }
 .inner-main-body,
 .inner-sidebar-body {
@@ -363,7 +361,7 @@ body {
 }
 .inner-main-footer,
 .inner-main-header {
-    /* box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.06);
+  /* box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.06);
   background-color: #fff; */
 }
 .inner-main-footer,
@@ -435,4 +433,19 @@ body {
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1rem;
+}
+
+/* ------------------------------- About Page ------------------------------- */
+.aboutContainer .jumbotron {
+  background-color: white;
+}
+.jumbotron {
+  background-image: url(../img/ecoFriendly.jpg);
+  background-size: 1020px 780px;
+  background-repeat: no-repeat;
+}
+
+
+.columnsHeader {
+  padding: 2em;
 }
