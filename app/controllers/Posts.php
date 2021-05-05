@@ -11,7 +11,8 @@
             $posts = $this->postModel->getPosts();
             $data = [
                 'posts' => $posts,
-                'topic_err' => ''
+                'topic_err' => '',
+                'topic' => 'all'
             ];
                         // Load a view and pass through data array
             $this->view('posts/index', $data);
@@ -33,7 +34,8 @@
             }
             $data = [
                 'posts' => $posts,
-                'topic_err' => ''
+                'topic_err' => '',
+                'topic' => $topic
             ];
             
             // Load a view and pass through data array

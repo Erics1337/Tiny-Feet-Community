@@ -48,12 +48,18 @@
                                 <div class="simplebar-content-wrapper" style="height: 100%;">
                                     <div class="simplebar-content" style="padding: 16px;">
                                         <nav class="nav nav-pills nav-gap-y-1 flex-column">
-                                            <a href="<?php echo URLROOT; ?>/posts/topic/all" class="nav-link nav-link-faded has-icon active">All Topics</a>
-                                            <a href="<?php echo URLROOT; ?>/posts/topic/userSubmitted" class="nav-link nav-link-faded has-icon">User-Submitted Data</a>
-                                            <a href="<?php echo URLROOT; ?>/posts/topic/RegionDisc" class="nav-link nav-link-faded has-icon">Regional Discussion</a>
-                                            <a href="<?php echo URLROOT; ?>/posts/topic/CapSol" class="nav-link nav-link-faded has-icon">CAP Solutions</a>
-                                            <a href="<?php echo URLROOT; ?>/posts/topic/CommCoB" class="nav-link nav-link-faded has-icon">Community Co-Benefits</a>
-                                            <a href="<?php echo URLROOT; ?>/posts/topic/other" class="nav-link nav-link-faded has-icon">Other</a>
+                                            <a href="<?php echo URLROOT; ?>/posts/topic/all" class="nav-link nav-link-faded has-icon <?php if($data['topic'] == 'all') echo 'active'; ?>">
+                                            All Topics</a>
+                                            <a href="<?php echo URLROOT; ?>/posts/topic/userSubmitted" class="nav-link nav-link-faded has-icon <?php if($data['topic'] == 'userSubmitted') echo 'active'; ?>">
+                                            User-Submitted Data</a>
+                                            <a href="<?php echo URLROOT; ?>/posts/topic/RegionDisc" class="nav-link nav-link-faded has-icon <?php if($data['topic'] == 'RegionDisc') echo 'active'; ?>">
+                                            Regional Discussion</a>
+                                            <a href="<?php echo URLROOT; ?>/posts/topic/CapSol" class="nav-link nav-link-faded has-icon <?php if($data['topic'] == 'CapSol') echo 'active'; ?>">
+                                            CAP Solutions</a>
+                                            <a href="<?php echo URLROOT; ?>/posts/topic/CommCoB" class="nav-link nav-link-faded has-icon <?php if($data['topic'] == 'CommCoB') echo 'active'; ?>">
+                                            Community Co-Benefits</a>
+                                            <a href="<?php echo URLROOT; ?>/posts/topic/other" class="nav-link nav-link-faded has-icon <?php if($data['topic'] == 'other') echo 'active'; ?>">
+                                            Other</a>
                                         </nav>
                                     </div>
                                 </div>

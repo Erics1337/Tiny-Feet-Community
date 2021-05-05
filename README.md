@@ -8,13 +8,14 @@ PHP micro-framework created by [Brad Traversy](https://github.com/bradtraversy) 
 ### Features of the micro-framework:
 
 * .htaccess files for URL re-routing
-* Uses classes and class methods to handle url requests in the format traversymvc/className/methodName
-* Data is passed between the controller and the view and model means of an array $data
+* Uses classes and class methods to handle url requests in the format URLROOT/className/methodName
+* Data is passed between the controller and the view/model by means of an array $data
 
 ### Features of the toolkit:
 
 * Forum where site visitors can view feedback from their community about issues relating to climate action planning
 * User registration and login functionality to gain access to the ability to create, update, and delete posts in a forum
+* User account profiles that can be updated by the registered user
 
 ## Getting Started
 
@@ -44,7 +45,7 @@ define('DB_NAME', 'cs_350');
 
 ### htaccess file
 
-Modify the .htaccess file inside the public folder to match the name of your installation folderf
+Modify the .htaccess file inside the public folder to match the name of your installation folder
 
 ### Install the Database
 
@@ -52,11 +53,9 @@ Create a database called “cs_350” w/ username “student”, password “CS3
 
 ## Built With
 
-* PHP
+* PHP + MySQL
 * Bootstrap CSS 4.0 & Font Awesome Icons
 * Bootswatch themes and Bootdey snippets
-
-
 
 ## License
 
