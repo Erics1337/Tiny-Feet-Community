@@ -48,7 +48,7 @@ ALTER TABLE `Posts`
 
 
 
--- POPULATE TABLES
+-- POPULATE TABLES Not Required
 
 
 

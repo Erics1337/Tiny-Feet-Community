@@ -3,14 +3,18 @@ class Profiles extends Controller
 {
     public function __construct()
     {
+        if (!isLoggedIn()) {
+            flash('Access_Restricted', 'Must Be Logged In to View That Page', 'alert alert-danger');
+            $this->view('pages/index');
+        }
         // Load User model
         $this->userModel = $this->model('User');
-
     }
 
     /* ----------------------------- /profiles/ ----------------------------- */
     public function index()
     {
+
         // Get all users
         $users = $this->userModel->getAllUsersPublicInfo();
 
@@ -77,7 +81,7 @@ class Profiles extends Controller
             } else {
                 // Check if email already exists with this model function
                 if ($data['email'] != $_SESSION['user_email']) {
-                    if($this->userModel->emailExists($data['email'])){
+                    if ($this->userModel->emailExists($data['email'])) {
                         $data['email_err'] = 'An account with that username already exists';
                     }
                 }
@@ -87,7 +91,7 @@ class Profiles extends Controller
                 $data['username_err'] = 'Please enter username';
             } else {
                 // Check if email already exists with this model function
-                if ($data['username'] != $_SESSION['user_username']){
+                if ($data['username'] != $_SESSION['user_username']) {
                     if ($this->userModel->usernameExists($data['username'])) {
                         $data['username_err'] = 'That username is already taken';
                     }
@@ -108,7 +112,7 @@ class Profiles extends Controller
 
                     // Redirect to potential new username
 
-                    redirect('profiles/user/'.$data['username']);
+                    redirect('profiles/user/' . $data['username']);
 
                     // die('Great Success!');
 
@@ -153,8 +157,9 @@ class Profiles extends Controller
         }
     }
 
-/* -------------------------------- Functions ------------------------------- */
-    public function updateUserSession($data){
+    /* -------------------------------- Functions ------------------------------- */
+    public function updateUserSession($data)
+    {
 
 
         // Reset timer on user_id

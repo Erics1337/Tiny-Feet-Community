@@ -47,14 +47,13 @@
     <div class="card-footer">
         <!-- <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
         <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a> -->
-        <a href="https://www.facebook.com/sharer.php?u=<?php echo URLROOT; ?>/posts/show/<?php echo $post['postId']; ?>" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
+        <a href="https://www.facebook.com/sharer.php?u=<?php echo URLROOT; ?>/posts/show/<?php echo $data['post']['id']; ?>" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
         <?php if ($data['post']['user_id'] == $_SESSION['user_id']) : ?>
 
             <form class="card-link float-right" style="display: inline;" id="deleteForm" action="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']['postId']; ?>" method="post">
-                <a href="<?php echo URLROOT; ?>/posts/delete/<?php echo $data['post']['id']; ?>" class="card-link float-right" onclick="document.getElementById('deleteForm').submit();"><i class="fa fa-trash-alt"></i> Delete</a>
+                <a href="#" class="card-link float-right" onclick="document.getElementById('deleteForm').submit();"><i class="fa fa-trash-alt"></i> Delete</a>
             </form>
             <a href="<?php echo URLROOT; ?>/posts/edit/<?php echo $data['post']['id']; ?>" class="card-link float-right"><i class="fa fa-edit"></i> Edit</a>
-
         <?php endif; ?>
 
     </div>

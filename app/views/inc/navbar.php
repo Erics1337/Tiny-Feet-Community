@@ -13,9 +13,11 @@
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/posts">Posts</a>
         </li>
+        <?php if(isLoggedIn()): ?>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT; ?>/profiles">Profiles</a>
         </li>
+        <?php endif ?>
         <li class="nav-item">
           <a class="nav-link" href="https://www.tinyfeet.app">Toolkit</a>
         </li>
@@ -44,3 +46,4 @@
     </div>
   </div>
 </nav>
+<?php flash('Access_Restricted'); ?>

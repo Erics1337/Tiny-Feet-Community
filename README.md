@@ -2,7 +2,7 @@
 
 ## Uses traversymvc PHP micro-framework
 
-PHP micro-framework created by [Brad Traversy](https://github.com/bradtraversy) through his udemy course.  Customized by me and developed in consideration of the [Tiny Feet CAP Toolkit project](www.tinyfeet.app) as submission for my cs_350 final project assignment.
+PHP micro-framework created by [Brad Traversy](https://github.com/bradtraversy) through his udemy course.  Customized by me and developed in consideration of the [Tiny Feet CAP Toolkit project](https://www.tinyfeet.app) as submission for my cs_350 final project assignment.
 
 
 ### Features of the micro-framework:
@@ -10,16 +10,18 @@ PHP micro-framework created by [Brad Traversy](https://github.com/bradtraversy) 
 * .htaccess files for URL re-routing
 * Uses classes and class methods to handle url requests in the format URLROOT/className/methodName
 * Data is passed between the controller and the view/model by means of an array $data
+* Message banner flashing 
 
-### Features of the toolkit:
+### Features of the site:
 
 * Forum where site visitors can view feedback from their community about issues relating to climate action planning
-* User registration and login functionality to gain access to the ability to create, update, and delete posts in a forum
-* User account profiles that can be updated by the registered user
+** User registration and login functionality to gain access to the following:
+*** Ability to create, update, and delete one's own posts, in a pre-defned set of topics 
+*** View all user profiles and edit one's own
 
 ## Getting Started
 
-Copy the files to your XAMPP, MAMP, or other web server program's htdocs folder, then follow the  instructions below to use this app on your local machine.
+Copy the files to your XAMPP, MAMP, or other web server application's htdocs folder, then follow the instructions below to use this app on your local machine.
 
 ### Config File
 
