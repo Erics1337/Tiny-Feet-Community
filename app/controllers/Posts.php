@@ -82,13 +82,19 @@
                 }
 
             } else {
-                $data = [
-                    'posts' => '',
-                    'body' => ''
-                ];
-    
-                // Load a view and pass through data array
-                $this->view('posts/add', $data);
+                if(isLoggedIn()){
+                    $data = [
+                        'posts' => '',
+                        'body' => ''
+                    ];
+        
+                    // Load a view and pass through data array
+                    $this->view('posts/add', $data);
+                } else{
+                    flash('post_message', 'Please sign in to make a post', 'alert alert-danger');
+                    redirect('posts');
+                }
+
             }
         }
 

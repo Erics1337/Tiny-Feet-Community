@@ -7,13 +7,14 @@
         <div class="form-group">
             <label for="topic">Choose a topic to post to:</label>
             <br>
-            <select name="topic" id="topic">
+            <select id="topicInput" name="topic" id="topic">
                 <option value="userSubmitted">User-Submitted Data</option>
                 <option value="RegionDisc">Regional Discussion</option>
                 <option value="CapSol">CAP Solutions</option>
                 <option value="CommCoB">Community Co-Benefits</option>
                 <option value="other">Other</option>
             </select>
+            <br>
             <br>
             <br>
             <label for="title">Title: <sup>*</sup></label>

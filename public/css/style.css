@@ -462,3 +462,10 @@ body {
 .columnsHeader {
   padding: 2em;
 }
+
+/* -------------------------------- Add Post Page -------------------------------- */
+#topicInput {
+  outline: none;
+  border:0px;
+  outline:0px;
+}
