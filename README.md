@@ -33,6 +33,8 @@ define('DB_HOST', '<databaseHost>');
 define('DB_USER', '<databaseUser>');
 define('DB_PASS', '<databasePassword>');
 define('DB_NAME', '<databaseName>');
+// URL Root
+define('URLROOT', 'http://<serverIP>:<serverPort><rootFolderName');
 ```
 
 Default configuration for cs_350:
@@ -43,11 +45,14 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'student');
 define('DB_PASS', 'CS350');
 define('DB_NAME', 'cs_350');
+// URL Root (using MAMP)
+define('URLROOT', 'http://localhost:8888/Tiny-Feet-Community');
 ```
 
 ### htaccess file
 
 Modify the .htaccess file inside the public folder to match the name of your installation folder
+(only need to do this if you change from the default folder name "Tiny-Feet-Community)
 
 ### Install the Database
 
