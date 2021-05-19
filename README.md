@@ -52,7 +52,7 @@ define('URLROOT', 'http://localhost:8888/Tiny-Feet-Community');
 ### htaccess file
 
 Modify the .htaccess file inside the public folder to match the name of your installation folder
-(only need to do this if you change from the default folder name "Tiny-Feet-Community)
+(only need to do this if you change from the default folder name "Tiny-Feet-Community")
 
 ### Install the Database
 
